@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "main.h"
 
 /**
@@ -6,17 +5,17 @@
  * Description: A program that prints \"_putchar\" followed by a new line.
  * Return: Always 0 (success.)
  */
+
 int main(void)
 {
-	putchar('_');
-	putchar('p');
-	putchar('u');
-	putchar('t');
-	putchar('c');
-	putchar('h');
-	putchar('a');
-	putchar('r');
-	putchar('\n');
+	char ch[] = "_putchar";
 
+	int i;
+
+	for (i = 0; i <= 7; i++)
+	{
+		_putchar(ch[i]);
+	}
+	_putchar('\n');
 	return (0);
 }
