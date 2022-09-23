@@ -19,4 +19,6 @@ char *leet(char *s);
 
 char *rot13(char *s);
 
+int _putchar(char c);
+
 #endif /* MAIN_H */
