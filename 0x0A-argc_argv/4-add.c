@@ -1,46 +1,57 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <stdio.h> /* printf */
+#include <stdlib.h> /* atoi */
+#include <stdbool.h> /* bool data type */
 
 /**
- * main - a program that adds positive numbers
- * it prints the result, followed by a new line
- * If no number is passed to the program, it prints 0, followed by a new line
- * If one of the number contains symbols that are not digits,
- * print Error, followed by a new line, and return 1
- * @argc: arguement count
- * @argv: arguement array
- *
- * Return: 0 on success, 1 otherwise
+ * is_num - iterate through each argv to test if it's a number
+ * @argvv: a argv
+ * Return: true only if entire string is a number, false if not
+ */
+
+bool is_num(char *argvv)
+{
+	int j = 0;
+
+	for (j = 0; argvv[j]; j++)
+	{
+		if (!(argvv[j] >= '0' && argvv[j] <= '9'))
+			return (0);
+	}
+	return (1);
+}
+
+/**
+ * main - print sum if all arguments given are numbers
+ * @argc: argument counter
+ * @argv: arguments
+ * Return: 0 on success, 1 if an argument wasn't a number
  */
 
 int main(int argc, char *argv[])
 {
-	int addition, i;
+	int i = 1;
+	int sum = 0;
 
-	addition = 0;
-
+	/* validate input */
 	if (argc == 1)
 	{
 		printf("0\n");
+		return (0);
 	}
-	else
+
+	/* check all arguments to add numbers */
+	while (i < argc)
 	{
-		i = 1;
-		while (i < argc)
+		if (is_num(argv[i]))
+			sum += atoi(argv[i]);
+		else
 		{
-			if (atoi(argv[i]) == 0)
-			{
-				printf("Error\n");
-				return (1);
-			}
-			else
-			{
-				addition = addition + atoi(argv[i]);
-			}
-			i++;
+			printf("Error\n");
+			return (1);
 		}
-	printf("%d\n", addition);
+		i++;
 	}
+	printf("%d\n", sum);
 
 	return (0);
 }
